@@ -1,0 +1,12 @@
+projects:
+  imagescomments:
+    schemaPath: src/main/graphql/schema.json
+    includes:
+      - src/main/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/main/graphql

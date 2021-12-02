@@ -43,5 +43,6 @@
 (defn with-auth [component]
   (-> component
       reagent/reactify-component
-      (withAuthenticator (clj->js {:loginMechanisms  ["email"]
+      (withAuthenticator (clj->js {:includeGreetings true
+                                   :loginMechanisms  ["email"]
                                    :signUpAttributes ["email"]}))))
