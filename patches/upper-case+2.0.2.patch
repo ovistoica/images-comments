@@ -1,0 +1,23 @@
+diff --git a/node_modules/upper-case/dist/index.js b/node_modules/upper-case/dist/index.js
+index 138d320..809c876 100644
+--- a/node_modules/upper-case/dist/index.js
++++ b/node_modules/upper-case/dist/index.js
+@@ -20,12 +20,12 @@ var SUPPORTED_LOCALE = {
+     lt: {
+         regexp: /[\u0069\u006A\u012F]\u0307|\u0069\u0307[\u0300\u0301\u0303]/g,
+         map: {
+-            i̇: "\u0049",
+-            j̇: "\u004A",
+-            į̇: "\u012E",
+-            i̇̀: "\u00CC",
+-            i̇́: "\u00CD",
+-            i̇̃: "\u0128",
++            'i̇': "\u0049",
++            'j̇': "\u004A",
++            'į̇': "\u012E",
++            'i̇̀': "\u00CC",
++            'i̇́': "\u00CD",
++            'i̇̃': "\u0128",
+         },
+     },
+ };
