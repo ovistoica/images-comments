@@ -8,7 +8,10 @@
  :dependencies
  [[reagent "1.1.0"]
   [re-frame "1.2.0"]
-  [day8.re-frame/re-frame-10x "1.1.13"]]
+  [day8.re-frame/re-frame-10x "1.1.13"]
+  [skrat/promesa "1.8.1-3"]
+  [metosin/reitit "0.5.15"]
+  [metosin/reitit-frontend "0.5.15"]]
 
  :nrepl
  {:port 56844}
@@ -28,6 +31,9 @@
    :compiler-options
                {:output-feature-set :es6
                 :closure-defines    {re-frame.trace/trace-enabled?        true
-                                     day8.re-frame.tracing/trace-enabled? true}}}}}
+                                     day8.re-frame.tracing/trace-enabled? true}}
+   :devtools   {:http-root "public"
+                :http-port 8080
+                :preloads  [day8.re-frame-10x.preload]}}}}
 
 

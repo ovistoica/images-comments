@@ -4,10 +4,9 @@ import { schema } from './schema';
 
 
 
-const { Task, PrivateNote, Design } = initSchema(schema);
+const { Design, Shot } = initSchema(schema);
 
 export {
-  Task,
-  PrivateNote,
-  Design
+  Design,
+  Shot
 };

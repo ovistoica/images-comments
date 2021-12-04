@@ -1,10 +1,7 @@
-(ns app.api.fetch
+(ns app.design.api
   (:require ["/graphql/queries" :refer [^js listDesigns]]
             ["aws-amplify" :refer [API graphqlOperation]]))
 
-;; TODO: a Real world example should have things like retries and error messages in the UI.
-(defn- failed [e]
-  (-> js/console (.error e)))
 
 (defn- designs-data [^js data]
   (-> data
@@ -13,12 +10,7 @@
       :listDesigns
       :items))
 
-(defn get-designs [success-fn]
-  (-> API
-      (.graphql (graphqlOperation listDesigns))
+(defn get-designs [{:keys [success-fn failure-fn]}]
+  (-> (.graphql API (graphqlOperation listDesigns))
       (.then #(-> % designs-data success-fn))
-      (.catch failed)))
-
-
-
-
+      (.catch failure-fn)))

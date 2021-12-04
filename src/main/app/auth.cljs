@@ -18,6 +18,7 @@
 (defn- js->user-data [^js data]
   (assoc (js->attributes data) :username (-> data .-username)))
 
+
 (defn- js->event [^js data]
   (-> data
       .-payload
@@ -30,11 +31,13 @@
       (.then on-signed-out)
       (.catch failed)))
 
+
 (defn user! [success-fn]
   (-> Auth
       .currentAuthenticatedUser
       (.then #(-> % js->user-data success-fn))
       (.catch failed)))
+
 
 (defn listen-to-auth-events [callback]
   (-> Hub

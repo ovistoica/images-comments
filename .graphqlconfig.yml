@@ -1,6 +1,6 @@
 projects:
   imagescomments:
-    schemaPath: src/main/graphql/schema.json
+    schemaPath: amplify/backend/api/imagescomments/build/schema.graphql
     includes:
       - src/main/graphql/**/*.js
     excludes:
@@ -10,3 +10,6 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/main/graphql
+extensions:
+  amplify:
+    version: 3

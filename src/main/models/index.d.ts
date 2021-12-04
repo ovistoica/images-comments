@@ -4,32 +4,31 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-export declare class Task {
-  readonly id: string;
-  readonly title: string;
-  readonly description?: string;
-  readonly status?: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<Task>);
-  static copyOf(source: Task, mutator: (draft: MutableModel<Task>) => MutableModel<Task> | void): Task;
+type DesignMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class PrivateNote {
-  readonly id: string;
-  readonly content: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<PrivateNote>);
-  static copyOf(source: PrivateNote, mutator: (draft: MutableModel<PrivateNote>) => MutableModel<PrivateNote> | void): PrivateNote;
+type ShotMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
 export declare class Design {
   readonly id: string;
   readonly name: string;
   readonly context: string;
+  readonly shots?: Shot[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<Design>);
-  static copyOf(source: Design, mutator: (draft: MutableModel<Design>) => MutableModel<Design> | void): Design;
+  constructor(init: ModelInit<Design, DesignMetaData>);
+  static copyOf(source: Design, mutator: (draft: MutableModel<Design, DesignMetaData>) => MutableModel<Design, DesignMetaData> | void): Design;
+}
+
+export declare class Shot {
+  readonly id: string;
+  readonly url: string;
+  readonly design?: Design;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Shot, ShotMetaData>);
+  static copyOf(source: Shot, mutator: (draft: MutableModel<Shot, ShotMetaData>) => MutableModel<Shot, ShotMetaData> | void): Shot;
 }

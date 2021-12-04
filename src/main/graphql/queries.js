@@ -1,94 +1,64 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
+// noinspection GraphQLUnresolvedReference
 
-export const syncTasks = /* GraphQL */ `
-  query SyncTasks(
-    $filter: ModelTaskFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTasks(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
+export const getShot = /* GraphQL */ `
+  query GetShot($id: ID!) {
+    getShot(id: $id) {
+      id
+      url
+      designID
+      design {
         id
-        title
-        description
-        status
+        name
+        context
+        shots {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
         _version
         _deleted
         _lastChangedAt
-        createdAt
-        updatedAt
+        owner
       }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getTask = /* GraphQL */ `
-  query GetTask($id: ID!) {
-    getTask(id: $id) {
-      id
-      title
-      description
-      status
+      createdAt
+      updatedAt
       _version
       _deleted
       _lastChangedAt
-      createdAt
-      updatedAt
+      owner
     }
   }
 `;
-export const listTasks = /* GraphQL */ `
-  query ListTasks(
-    $filter: ModelTaskFilterInput
+export const listShots = /* GraphQL */ `
+  query ListShots(
+    $filter: ModelShotFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listShots(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
-        description
-        status
+        url
+        designID
+        design {
+          id
+          name
+          context
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        createdAt
+        updatedAt
         _version
         _deleted
         _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPrivateNotes = /* GraphQL */ `
-  query SyncPrivateNotes(
-    $filter: ModelPrivateNoteFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPrivateNotes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        content
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
         owner
       }
       nextToken
@@ -96,35 +66,39 @@ export const syncPrivateNotes = /* GraphQL */ `
     }
   }
 `;
-export const getPrivateNote = /* GraphQL */ `
-  query GetPrivateNote($id: ID!) {
-    getPrivateNote(id: $id) {
-      id
-      content
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const listPrivateNotes = /* GraphQL */ `
-  query ListPrivateNotes(
-    $filter: ModelPrivateNoteFilterInput
+export const syncShots = /* GraphQL */ `
+  query SyncShots(
+    $filter: ModelShotFilterInput
     $limit: Int
     $nextToken: String
+    $lastSync: AWSTimestamp
   ) {
-    listPrivateNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    syncShots(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
       items {
         id
-        content
+        url
+        designID
+        design {
+          id
+          name
+          context
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        createdAt
+        updatedAt
         _version
         _deleted
         _lastChangedAt
-        createdAt
-        updatedAt
         owner
       }
       nextToken
@@ -138,11 +112,26 @@ export const getDesign = /* GraphQL */ `
       id
       name
       context
+      shots {
+        items {
+          id
+          url
+          designID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
       _version
       _deleted
       _lastChangedAt
-      createdAt
-      updatedAt
       owner
     }
   }
@@ -158,11 +147,15 @@ export const listDesigns = /* GraphQL */ `
         id
         name
         context
+        shots {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
         _version
         _deleted
         _lastChangedAt
-        createdAt
-        updatedAt
         owner
       }
       nextToken
@@ -187,11 +180,15 @@ export const syncDesigns = /* GraphQL */ `
         id
         name
         context
+        shots {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
         _version
         _deleted
         _lastChangedAt
-        createdAt
-        updatedAt
         owner
       }
       nextToken
