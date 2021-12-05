@@ -1,14 +1,16 @@
 {
+  "version": "1",
+  "cognitoConfig": {
     "identityPoolName": "imagescommentsf150627b_identitypool_f150627b",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "imagesf150627b",
     "userPoolName": "imagescommentsf150627b_userpool_f150627b",
     "autoVerifiedAttributes": [
-        "email"
+      "email"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
-        "SMS Text Message"
+      "SMS Text Message"
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
@@ -18,39 +20,43 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+      "email"
     ],
+    "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "email"
+      "email"
     ],
     "userpoolClientReadAttributes": [
-        "email"
+      "email"
     ],
     "userpoolClientLambdaRole": "imagesf150627b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "f150627b",
-    "resourceName": "imagescommentsf150627b",
     "authSelections": "identityPoolAndUserPool",
+    "resourceName": "imagescommentsf150627b",
+    "serviceName": "Cognito",
+    "useDefault": "default",
+    "sharedId": "f150627b",
+    "userPoolGroupList": [],
+    "usernameAttributes": [
+      "email"
+    ],
+    "usernameCaseSensitive": false,
     "authRoleArn": {
-        "Fn::GetAtt": [
-            "AuthRole",
-            "Arn"
-        ]
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
     },
     "unauthRoleArn": {
-        "Fn::GetAtt": [
-            "UnauthRole",
-            "Arn"
-        ]
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
     },
-    "useDefault": "default",
-    "usernameAttributes": [
-        "email"
-    ],
-    "userPoolGroupList": [],
-    "serviceName": "Cognito",
-    "usernameCaseSensitive": false,
+    "breakCircularDependency": true,
+    "useEnabledMfas": false,
     "dependsOn": []
+  }
 }

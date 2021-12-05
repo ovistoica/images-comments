@@ -13,7 +13,14 @@
     },
     "categories": {
       "auth": {
-        "imagescommentsf150627b": {}
+        "imagescommentsf150627b": {},
+        "true": {}
+      },
+      "function": {
+        "S3Trigger9b22f5e1": {
+          "deploymentBucketName": "amplify-imagescomments-dev-100730-deployment",
+          "s3Key": "amplify-builds/S3Trigger9b22f5e1-45655946775732556e6d-build.zip"
+        }
       }
     }
   }

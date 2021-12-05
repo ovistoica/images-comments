@@ -9,7 +9,6 @@
 
             [app.router :as router]
             [app.auth :as auth]
-            [app.views :as views]
 
             [reagent.dom :as rdom]
             [re-frame.core :as rf]))
@@ -23,6 +22,7 @@
 (defn ^:dev/after-load start []
   (rf/clear-subscription-cache!)
   (router/init-routes!)
+  (rf/dispatch [:nav/push-state :design-screen])
   (rdom/render [app] root-element))
 
 (defn init []
@@ -30,3 +30,4 @@
   (-> Amplify (.configure aws-exports))
   (rf/dispatch-sync [:app/init])
   (start))
+
