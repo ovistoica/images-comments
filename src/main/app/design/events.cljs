@@ -6,14 +6,14 @@
   :designs/store-designs
   (fn [db [_ designs]]
     (-> db
-        (assoc-in [:app :designs :data] designs)
-        (assoc-in [:app :designs :loading?] false))))
+        (assoc-in [:designs :data] designs)
+        (assoc-in [:designs :loading?] false))))
 
 (rf/reg-event-db
   :designs/notify-failure
   (fn [db [_ error]]
     (-> db
-        (assoc-in [:app :designs :loading?] false)
+        (assoc-in [:designs :loading?] false)
         (assoc-in [:errors :designs] error))))
 
 (rf/reg-fx
@@ -29,4 +29,4 @@
     {:designs/fetch {:on-success :designs/store-designs
                      :on-failure :designs/notify-failure}
 
-     :db            (assoc-in db [:app :designs :loading?] true)}))
+     :db            (assoc-in db [:designs :loading?] true)}))

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.form-input {
+    @apply border-0 w-full placeholder-gray-400 pt-2 border-gray-700 focus:outline-none focus:ring-0;
+    @apply rounded mt-2;
+}

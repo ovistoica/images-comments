@@ -5,12 +5,12 @@
 (rf/reg-event-db
   :app/teardown
   (fn [db _]
-    (dissoc db [:app])))
+    (dissoc db :designs :user :draft)))
 
 (rf/reg-event-fx
   :app/user-logged-in
   (fn [{:keys [db]} [_ data]]
-    {:db       (assoc-in db [:app :user] data)
+    {:db       (assoc-in db [:user] data)
      :dispatch [:designs/load]}))
 
 

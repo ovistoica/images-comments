@@ -4,7 +4,7 @@
 (rf/reg-sub
   :app/user
   (fn [db]
-    (get-in db [:app :user])))
+    (get-in db [:user])))
 
 (rf/reg-sub
   :app/user-name

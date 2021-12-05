@@ -6,47 +6,8 @@
             [reitit.frontend.controllers :as rtfc]
             [reitit.coercion.spec :as rss]
             [app.design.views :refer [designs-controllers designs-page]]
-            [re-frame.core :as rf]
-            ["/ui-components/NavBar" :default Navbar]))
-
-
-;;; Effects ;;;
-
-(rf/reg-fx
-  :push-state
-  (fn [route]
-    (apply rtfe/push-state route)))
-
-;;; Events ;;;
-
-(rf/reg-event-fx
-  :nav/push-state
-  (fn [_ [_ & route]]
-    {:push-state route}))
-
-(rf/reg-event-db
-  :nav/set-current-route
-  (fn [db [_ new-match]]
-    (let [old-match (:current-route db)]
-      (rtfc/apply-controllers (:controllers old-match) new-match)
-      (assoc-in db [:app :nav :current-route] new-match))))
-
-;;; Subscriptions ;;;
-(rf/reg-sub
-  :nav/current-route
-  (fn [db]
-    (-> db :app :nav :current-route)))
-
-;;; Routes ;;;
-
-(defn href
-  "Return relative url for given route. Url can be used in HTML links."
-  ([k]
-   (href k nil nil))
-  ([k params]
-   (href k params nil))
-  ([k params query]
-   (rtfe/href k params query)))
+            [app.create-designs.views :refer [create-design-controllers create-design]]
+            [re-frame.core :as rf]))
 
 (def routes
   [""
@@ -54,7 +15,12 @@
     {:name        :design-screen
      :view        designs-page
      :link-text   "Designs"
-     :controllers designs-controllers}]])
+     :controllers designs-controllers}]
+   ["/create"
+    {:name        :create-design
+     :view        create-design
+     :link-text   "Create Design"
+     :controllers create-design-controllers}]])
 
 (defn on-navigate [new-match]
   (when new-match
@@ -66,32 +32,10 @@
     {:data {:coercion rss/coercion}}))
 
 (defn init-routes! []
-  (js/console.log "initializing routes")
-  (rtfe/start!
+  (js/console.log "initializing routes") (rtfe/start!
     router
     on-navigate
     {:use-fragment true}))
-
-
-
-(defn nav [{:keys [router current-route]}]
-  [:ul
-   (for [route-name (rt/route-names router)
-         :let [route (rt/match-by-name router route-name)
-               text (-> route :data :link-text)]]
-     [:li {:key route-name}
-      (when (= route-name (-> current-route :data :name))
-        "> ")
-      ;; Create a normal links that user can click
-      [:a {:href (href route-name)} text]])])
-
-(defn router-component []
-  (let [current-route @(rf/subscribe [:nav/current-route])]
-    [:div
-     [nav {:router router :current-route current-route}]
-     [:> NavBar]
-     (when current-route
-       [(-> current-route :data :view)])]))
 
 ;;; Setup ;;;
 

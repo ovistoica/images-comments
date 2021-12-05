@@ -4,4 +4,4 @@
 (rf/reg-sub
   :designs
   (fn [db]
-    (get-in db [:app :designs :data])))
+    (get-in db [:designs :data])))
