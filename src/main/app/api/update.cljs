@@ -19,7 +19,3 @@
       (.graphql (create-design-js-object data))
       (.then success-fn)
       (.catch failed)))
-
-
-(create-design {:name "New design"
-                :context "New design context"} js/console.log)

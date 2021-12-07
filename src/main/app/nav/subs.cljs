@@ -5,4 +5,4 @@
 (rf/reg-sub
   :nav/current-route
   (fn [db]
-    (-> db :app :nav :current-route)))
+    (-> db :nav :current-route)))

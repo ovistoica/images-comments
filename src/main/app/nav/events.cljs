@@ -21,4 +21,4 @@
   (fn [db [_ new-match]]
     (let [old-match (:current-route db)]
       (rtfc/apply-controllers (:controllers old-match) new-match)
-      (assoc-in db [:app :nav :current-route] new-match))))
+      (assoc-in db [:nav :current-route] new-match))))

@@ -7,6 +7,8 @@
             [reitit.coercion.spec :as rss]
             [app.design.views :refer [designs-controllers designs-page]]
             [app.create-designs.views :refer [create-design-controllers create-design]]
+            [app.create-designs.views :refer [create-design-controllers create-design]]
+            [app.views :refer [profile-page]]
             [re-frame.core :as rf]))
 
 (def routes
@@ -20,7 +22,12 @@
     {:name        :create-design
      :view        create-design
      :link-text   "Create Design"
-     :controllers create-design-controllers}]])
+     :controllers create-design-controllers}]
+   ["/profile"
+    {:name      :profile
+     :view      profile-page
+     :link-text "Profile"}]])
+
 
 (defn on-navigate [new-match]
   (when new-match
@@ -32,7 +39,8 @@
     {:data {:coercion rss/coercion}}))
 
 (defn init-routes! []
-  (js/console.log "initializing routes") (rtfe/start!
+  (js/console.log "initializing routes")
+  (rtfe/start!
     router
     on-navigate
     {:use-fragment true}))

@@ -4,6 +4,7 @@
             [reagent.dom :as rdom]
             [re-frame.core :as rf]
             [app.router :as router]
+            [app.ui :refer [app-layout]]
             [app.events]
             [app.subs]
     ;; designs
@@ -15,10 +16,11 @@
     ;; Nav
             [app.nav.subs]
             [app.nav.events]
-            [app.nav.views :refer [app-pages]]
             [app.auth :as auth]))
 
 
+(defn app-pages []
+  [app-layout router/router])
 
 (def root-element (-> js/document (.getElementById "root")))
 
